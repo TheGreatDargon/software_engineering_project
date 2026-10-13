@@ -46,10 +46,13 @@ main {
     border: 1px solid white;
     border-radius: 5px;
     padding: .5em;
-    background-color: #8724f9;
+    background-color: #848884;
 }
 
-
+.custom-file-button:hover {
+    background-color: white;
+    color: black;
+}
 
 .music_details {
     display: flex;
@@ -58,10 +61,13 @@ main {
     align-items: center;
     margin-top: 2em;
     padding: .5em;
-    background-color: #24F9A6;
+    background-color: #848884;
+    border: 1px solid white;
     border-radius: 5px;
     width: 70%;
 }
+
+
 
 .music_details_title {
     font-size: 1.5em;
@@ -83,7 +89,8 @@ main {
     align-items: center;
     margin-top: 2em;
     padding: .5em;
-    background-color: #24F9A6;
+    background-color: #848884;
+    border: 1px solid white;
     border-radius: 5px;
     width: 70%;
 }
@@ -91,6 +98,13 @@ main {
 .suggested_music_title {
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 table {
@@ -108,6 +122,15 @@ td {
     border-width: 0px 1px 0px 1px;
     border-style: solid;
     border-color: white;
+}
+
+td a {
+    text-decoration: none;
+    color: black;
+}
+
+td:hover {
+    background-color: white;
 }
 
 footer {
