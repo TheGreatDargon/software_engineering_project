@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Music Suggester</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <header>
+        <span><a href="#">Music Suggester</a></span>
+        <div>
+            <span>Search</span>
+            <span>My Playlists</span>
+            <span>Sign In</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="music_input">
+            <input type="file" id="music_input" name="music_input" accept="audio/mpeg, audio/mp3">
+            <label for="music_input" class="custom-file-button">Upload File</label>
+            <input type="text" id="music_input_text" name="music_input_text" placeholder="Or enter a song name">
+            <input type="submit" value="Submit">
+        </div>
+
+        <div class="music_details">
+            <!--This is for displaying the details of the inputted file-->
+            <span class="music_details_title">Details of the inputted file</span>
+            <table>
+                <th>Song Name</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Release Date</th>
+                <th>Genre</th>
+                <th>BPM</th>
+                <tr>
+                    <td>Nidone</td>
+                    <td>Creepy Nuts</td>
+                    <td>Legion</td>
+                    <td>01-27-2024</td>
+                    <td>Hip Hop</td>
+                    <td>176</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="suggested_music">
+            <!--This is for displaying the suggested songs-->
+            <span class="suggested_music_title">Suggested Songs</span>
+            <table>
+                <th>Song Name</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Overall</th>
+                <th>Release Date</th>
+                <th>Genre</th>
+                <th>BPM</th>
+                <tr>
+                    <td>Beats & Rhym</td>
+                    <td>MACCHO , NORIKIYO , 般若& DABO</td>
+                    <td>N/A</td>
+                    <td>81%</td>
+                    <td>43% - 10-28-2011</td>
+                    <td>68% - hip hop</td>
+                    <td>94% - 187</td>
+                </tr>
+                <tr>
+                    <td>Chxxai</td>
+                    <td>Creepy Nuts</td>
+                    <td>Legion</td>
+                    <td>79%</td>
+                    <td>50% - 02-05-2025</td>
+                    <td>72% - hip hop</td>
+                    <td>86% - 153</td>
+                </tr>
+            </table>
+
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="" async defer></script>
+</body>
+
+</html>
