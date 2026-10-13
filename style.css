@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom, black, grey);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 5em;
+    border-bottom: 1px solid white;
+}
+
+header div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header span {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    margin-left: 1em;
+    margin-right: 1em;
+    align-self: center;
+}
+
+header span a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    border-bottom: 1px solid white;
+}
+
+.custom-file-button {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: .5em;
+    background-color: #8724f9;
+}
+
+
+
+.music_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 2em;
+    padding: .5em;
+    background-color: #24F9A6;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.music_details_title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.music_input {
+    margin-top: 2em;
+}
+
+#music_input {
+    display: none;
+}
+
+.suggested_music {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 2em;
+    padding: .5em;
+    background-color: #24F9A6;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.suggested_music_title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: white;
+}
+
+td {
+    border-width: 0px 1px 0px 1px;
+    border-style: solid;
+    border-color: white;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-height: 5em;
+}
