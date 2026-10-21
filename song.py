@@ -50,7 +50,7 @@ class Song:
         else:
             print("Cover art URL is not available. Please fetch cover art first.")
 
-song = Song('./.music_files/shinzo/11 MIRROR.mp3') 
+song = Song('./.gitignore/.music_files/shinzo/11 MIRROR.mp3') 
 
 print(song.artist, song.title)
 print(song.cover_art_path)
