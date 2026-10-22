@@ -7,30 +7,28 @@ body {
 header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     min-height: 5em;
     border-bottom: 1px solid white;
 }
 
-header div {
+nav {
+    height: inherit;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-header span {
+nav a {
+    height: inherit;
+    text-decoration: none;
+    color: white;
     font-size: 2em;
     font-weight: bold;
     color: white;
     margin-left: 1em;
     margin-right: 1em;
-    align-self: center;
-}
-
-header span a {
-    text-decoration: none;
-    color: white;
 }
 
 main {
@@ -112,10 +110,15 @@ table {
     width: 100%;
 }
 
-th {
+.table-header {
     border-width: 0px 1px 1px 1px;
     border-style: solid;
     border-color: white;
+}
+
+.table-header:hover {
+    background-color: white;
+    cursor: ns-resize;
 }
 
 td {

@@ -19,12 +19,10 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <header>
-        <span><a href="#">Music Suggester</a></span>
-        <div>
-            <span>Search</span>
-            <span>My Playlists</span>
-            <span>Sign In</span>
-        </div>
+        <nav>
+            <a href="#">Music Suggester</a>
+            <a href="sign-in.html">Sign In</a>
+        </nav>
     </header>
 
     <main>
@@ -64,7 +62,7 @@
         <div class="suggested_music">
             <!--This is for displaying the suggested songs-->
             <span class="suggested_music_title">Suggested Songs</span>
-            <table>
+            <table class="table">
                 <th class="table-header" aria-sort="none">Song Name</th>
                 <th class="table-header" aria-sort="none">Artist</th>
                 <th class="table-header" aria-sort="none">Album</th>
@@ -72,7 +70,7 @@
                 <th class="table-header" aria-sort="none">Release Date</th>
                 <th class="table-header" aria-sort="none">Genre</th>
                 <th class="table-header" aria-sort="none">BPM</th>
-                <tr>
+                <tr class="table-row">
                     <td>Beats & Rhym</td>
                     <td>MACCHO , NORIKIYO , 般若& DABO</td>
                     <td>N/A</td>
@@ -81,7 +79,7 @@
                     <td>68% - hip hop</td>
                     <td>94% - 187</td>
                 </tr>
-                <tr>
+                <tr class="table-row">
                     <td>Chxxai</td>
                     <td>Creepy Nuts</td>
                     <td>Legion</td>
@@ -95,7 +93,11 @@
         </div>
     </main>
 
-    <footer></footer>
+    <footer>
+        <nav>
+            <a href="about.html">about</a>
+        </nav>
+    </footer>
 
     <script src="javascript.js" async defer></script>
 </body>
