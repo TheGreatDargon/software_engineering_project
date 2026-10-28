@@ -179,11 +179,12 @@ audioInput.addEventListener('change', async (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
-    var song = new Song(file);
-    await song.init(file);
-
     try {
-        var query = `${song.title} ${song.album}`
+
+        const metadata = await parseBlob(file);
+
+
+        var query = `${metadata.common.title} ${metadata.common.album}`;
 
         // Fetch and display Album Art if it exists
         const coverArt = await getiTunesCoverArt(query);
