@@ -40,14 +40,16 @@ main {
     border-bottom: 1px solid white;
 }
 
-.custom-file-button {
+.uploadFile {
     border: 1px solid white;
     border-radius: 5px;
     padding: .5em;
+    justify-content: center;
+    align-content: center;
     background-color: #848884;
 }
 
-.custom-file-button:hover {
+.uploadFile:hover {
     background-color: white;
     color: black;
 }
@@ -72,12 +74,35 @@ main {
     font-weight: bold;
 }
 
-.music_input {
+@keyframes spin {
+    to {
+        rotate: 1turn;
+    }
+}
+
+.audioInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+    height: 10vh;
     margin-top: 2em;
 }
 
-#music_input {
+#audioInput {
     display: none;
+}
+
+#audioInputText {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+    padding: 0;
+    border: 0;
+    height: 100%;
+}
+
+#submitSong {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+    height: 100%;
 }
 
 .suggested_music {
@@ -125,6 +150,7 @@ td {
     border-width: 0px 1px 0px 1px;
     border-style: solid;
     border-color: white;
+    width: auto;
 }
 
 td a {
@@ -141,4 +167,34 @@ footer {
     flex-direction: row;
     justify-content: space-around;
     min-height: 5em;
+}
+
+.audioPlayerVisual {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: auto;
+    min-width: 50px;
+    max-width: 120px;
+}
+
+.playButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: auto;
+    aspect-ratio: 1/1;
+    min-width: 50px;
+    max-width: 120px;
+    border-radius: 50%;
+    isolation: isolate;
+}
+
+.playIcon {
+    color: white;
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+    mix-blend-mode: difference;
+    font-variant-emoji: text;
 }

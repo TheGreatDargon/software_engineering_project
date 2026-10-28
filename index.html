@@ -26,23 +26,30 @@
     </header>
 
     <main>
-        <div class="music_input">
-            <input type="file" id="music_input" name="music_input" accept="audio/mpeg, audio/mp3">
-            <label for="music_input" class="custom-file-button">Upload File</label>
-            <input type="text" id="music_input_text" name="music_input_text" placeholder="Or enter a song name">
-            <input type="submit" value="Submit">
+        <div class="audioInput">
+            <audio id="audioPlayer"></audio>
+            <div class="audioPlayerVisual">
+                <button id="playButton" class="playButton"><span id="playIcon" class="playIcon">▶</span></button>
+            </div>
+            <input type="file" id="audioInput" name="audioInput" accept="audio/mpeg, audio/mp3">
+            <label for="audioInput" class="uploadFile">Upload File</label>
+            <div>
+                <input type="text" id="audioInputText" name="audioInputText" placeholder="Or enter a song name">
+                <input id="submitSong" type="submit" value="Search">
+            </div>
         </div>
 
         <div class="music_details">
             <!--This is for displaying the details of the inputted file-->
             <span class="music_details_title">Details of the inputted file</span>
-            <table>
+            <table id="inputtedSongs">
                 <th>Song Name</th>
                 <th>Artist</th>
                 <th>Album</th>
                 <th>Release Date</th>
                 <th>Genre</th>
                 <th>BPM</th>
+                <th>Link</th>
                 <tr>
 
                     <td>
@@ -55,6 +62,11 @@
                     <td>01-27-2024</td>
                     <td>Hip Hop</td>
                     <td>176</td>
+                    <td>
+                        <div class="audioPlayerVisual">
+                            <button class="playButton youtubeButton"><span class="playIcon">▶</span></button>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -78,6 +90,7 @@
                     <td>43% - 10-28-2011</td>
                     <td>68% - hip hop</td>
                     <td>94% - 187</td>
+                    <td></td>
                 </tr>
                 <tr class="table-row">
                     <td>Chxxai</td>
@@ -87,6 +100,7 @@
                     <td>50% - 02-05-2025</td>
                     <td>72% - hip hop</td>
                     <td>86% - 153</td>
+                    <td></td>
                 </tr>
             </table>
 
@@ -99,7 +113,15 @@
         </nav>
     </footer>
 
-    <script src="javascript.js" async defer></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "kuroshiro": "https://esm.sh/kuroshiro@1.2.0",
+                "kuroshiro-analyzer-kuromoji": "https://esm.sh/kuroshiro-analyzer-kuromoji@1.1.0"
+            }
+        }
+    </script>
+    <script type="module" src="javascript.js" async defer></script>
 </body>
 
 </html>
