@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} · MusicSuggestor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    {% include "navigation.html" %}
+    {% block main %}
+    <main class="auth-main">
+        <section class="auth-card" aria-labelledby="auth-heading">
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+    
+    {% endblock %}
+    <svg class="page-waves" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="wave-fill" x2="0%" y2="100%">
+            <stop stop-color="#7d3de0" stop-opacity=".4"/>
+            <stop offset="1" stop-color="#301656" stop-opacity=".05"/>
+        </linearGradient></defs>
+        <path d="M0 70 C340 -45 450 235 790 180 S1180 -30 1440 95 V260 H0Z" fill="url(#wave-fill)" stroke="#6438a4" stroke-opacity=".55"/>
+        <path d="M0 205 C315 218 385 110 610 136 S1080 330 1440 180 V260 H0Z" fill="url(#wave-fill)" stroke="#8c44d7" stroke-opacity=".45"/>
+    </svg>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "auth-layout.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h1 id="auth-heading">Sign Up</h1>
+<p>Create your MusicSuggestor account.</p>
+<div class="auth-fields">
+    <label for="email">Email address</label>
+    <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="password">Password</label>
+    <input id="password" type="password" autocomplete="new-password">
+    <button class="sign-in" type="button" disabled>Sign Up</button>
+</div>
+<p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Sign In</a></p>
+{% endblock %}

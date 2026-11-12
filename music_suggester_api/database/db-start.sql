@@ -1,7 +1,6 @@
 -- MySQL database setup
 
-CREATE DATABASE IF NOT EXISTS music_suggester;
-USE music_suggester;
+USE se1;
 
 -- Users who can log in and save playlists
 CREATE TABLE IF NOT EXISTS users (
