@@ -172,6 +172,7 @@ async function getiTunesCoverArt(query) {
     });
 
     const url = `https://itunes.apple.com/search?term=${query}&entity=album&limit=1`;
+    console.log(url)
 
     try {
         const response = await fetch(url);
@@ -220,7 +221,10 @@ async function handleFileSelection(event) {
         await loadMetadataTools();
         if (version !== selectionVersion) return;
         const metadata = await parseBlob(file);
-        const query = [metadata.common.title, metadata.common.album].filter(Boolean).join(' ');
+        console.log(metadata.common);
+        console.log(metadata.format)
+        const query = [metadata.common.artist, metadata.common.album].filter(Boolean).join('+');
+        console.log(query)
         if (!query || version !== selectionVersion) return;
         const coverArt = await getiTunesCoverArt(query);
         // A previous selection must never overwrite the current track's artwork.
