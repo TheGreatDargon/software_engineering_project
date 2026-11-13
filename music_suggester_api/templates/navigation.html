@@ -1,0 +1,21 @@
+<header>
+    <nav aria-label="Main">
+        <a class="nav-brand" href="{{ url_for('home') }}"><svg class="wave-mark" width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 18h1 M8 14v8 M13 9v18 M18 4v28 M23 9v18 M28 14v8 M32 18h1"/>
+        </svg> Music<span class="accent">Suggestor</span></a>
+        <a href="{{ url_for('home') }}"{% if request.endpoint in ('main', 'home') %} class="home-link" aria-current="page"{% endif %}>Home</a>
+        
+        {% if session.get('user_id') is not none %}
+        <a href="{{ url_for('playlists') }}"{% if request.endpoint == 'playlists' %} aria-current="page"{% endif %}>My Playlists</a>
+        <span class="nav-username">{{ session.get('username', '') }}</span>
+        
+        <form class="logout-form" method="post" action="{{ url_for('logout') }}">
+            <button class="logout-button" type="submit">Log Out</button>
+        </form>
+
+        {% else %}
+        <a href="{{ url_for('signUp') }}"{% if request.endpoint == 'signUp' %} aria-current="page"{% endif %}>Sign Up</a>
+        <a class="sign-in" href="{{ url_for('login') }}"{% if request.endpoint == 'login' %} aria-current="page"{% endif %}>Sign In</a>
+        {% endif %}
+    </nav>
+</header>

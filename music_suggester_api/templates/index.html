@@ -1,128 +1,94 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Music Suggester</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MusicSuggestor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+    <script defer src="{{ url_for('static', filename='js/javascript.js') }}"></script>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <header>
-        <nav>
-            <a href="#">Music Suggester</a>
-            <a href="sign-in.html">Sign In</a>
-        </nav>
-    </header>
-
+    {% include "navigation.html" %}
     <main>
-        <div class="audioInput">
-            <audio id="audioPlayer"></audio>
-            <div class="audioPlayerVisual">
-                <button id="playButton" class="playButton"><span id="playIcon" class="playIcon">▶</span></button>
+        <section class="audioInput" aria-labelledby="upload-heading">
+            <h1 id="upload-heading">Find Music <span class="accent">You’ll Love</span></h1>
+            <p>Upload a song and discover similar tracks from our library.</p>
+            <input type="file" id="audioInput" accept=".mp3,audio/mpeg">
+
+            <div class="drop-zone" id="drop-zone">
+                <svg class="upload-icon" width="64" height="56" viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 43h-6a12 12 0 0 1-1-24 17 17 0 0 1 33 2 11 11 0 0 1 0 22h-6M32 49V29m-8 8 8-8 8 8"/>
+                </svg>
+                <h2>Drag &amp; Drop Music Files Here</h2>
+                <p>or</p>
+                <label class="uploadFile" for="audioInput">Choose Files</label>
+                <p class="file-type">Supported file type: MP3</p>
             </div>
-            <input type="file" id="audioInput" name="audioInput" accept="audio/mpeg, audio/mp3">
-            <label for="audioInput" class="uploadFile">Upload File</label>
-            <div>
-                <input type="text" id="audioInputText" name="audioInputText" placeholder="Or enter a song name">
-                <input id="submitSong" type="submit" value="Search">
+
+            <p id="selected-track" role="status"></p>
+        </section>
+
+        <section class="music_details" id="track-card" aria-label="Selected track" hidden>
+            <div class="track-summary">
+                <div class="audioPlayerVisual">
+                    <button id="playButton" class="playButton" type="button" aria-label="Play preview" aria-pressed="false" disabled><span id="playIcon" class="playIcon" aria-hidden="true">▶</span></button>
+                </div>
+                <div><small>Selected track</small><p id="track-details"></p></div>
+                <button id="clear-track" type="button" aria-label="Remove selected track">×</button>
+                <audio id="audioPlayer" preload="metadata"></audio>
             </div>
-        </div>
+            <p id="player-status" role="status"></p>
 
-        <div class="music_details">
-            <!--This is for displaying the details of the inputted file-->
-            <span class="music_details_title">Details of the inputted file</span>
-            <table id="inputtedSongs">
-                <th>Song Name</th>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Release Date</th>
-                <th>Genre</th>
-                <th>BPM</th>
-                <th>Link</th>
-                <tr>
+            <div class="track-actions">
+                <label class="uploadFile secondary" for="audioInput">＋ Choose Another Song</label>
+                <button id="find-similar" type="button">Find Similar Songs</button>
+            </div>
+        </section>
 
-                    <td>
-                        <a href="https://youtu.be/6-gUFisDUvM?si=ByvJh-D9jFuQ8HRw" target="_blank">
-                            <div class="cell">Nidone</div>
-                        </a>
-                    </td>
-                    <td>Creepy Nuts</td>
-                    <td>Legion</td>
-                    <td>01-27-2024</td>
-                    <td>Hip Hop</td>
-                    <td>176</td>
-                    <td>
-                        <div class="audioPlayerVisual">
-                            <button class="playButton youtubeButton"><span class="playIcon">▶</span></button>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <section class="suggested_music" id="results" aria-labelledby="recommendation-heading" hidden>
+            <div class="results-heading">
+                <div><h2 id="recommendation-heading">Recommended Songs</h2><p>Sample results from the current demo.</p></div>
+            </div>
 
-        <div class="suggested_music">
-            <!--This is for displaying the suggested songs-->
-            <span class="suggested_music_title">Suggested Songs</span>
-            <table class="table">
-                <th class="table-header" aria-sort="none">Song Name</th>
-                <th class="table-header" aria-sort="none">Artist</th>
-                <th class="table-header" aria-sort="none">Album</th>
-                <th class="table-header" aria-sort="none">Overall</th>
-                <th class="table-header" aria-sort="none">Release Date</th>
-                <th class="table-header" aria-sort="none">Genre</th>
-                <th class="table-header" aria-sort="none">BPM</th>
-                <tr class="table-row">
-                    <td>Beats & Rhym</td>
-                    <td>MACCHO , NORIKIYO , 般若& DABO</td>
-                    <td>N/A</td>
-                    <td>81%</td>
-                    <td>43% - 10-28-2011</td>
-                    <td>68% - hip hop</td>
-                    <td>94% - 187</td>
-                    <td></td>
-                </tr>
-                <tr class="table-row">
-                    <td>Chxxai</td>
-                    <td>Creepy Nuts</td>
-                    <td>Legion</td>
-                    <td>79%</td>
-                    <td>50% - 02-05-2025</td>
-                    <td>72% - hip hop</td>
-                    <td>86% - 153</td>
-                    <td></td>
-                </tr>
-            </table>
+            <div class="table-scroll">
+                <table class="table" data-sortable>
+                    <thead><tr>
+                        <th class="table-header" scope="col">#</th>
+                        <th class="table-header" scope="col" data-sort-type="text"><button type="button" data-sort-column disabled>Title<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                        <th class="table-header" scope="col" data-sort-type="text"><button type="button" data-sort-column disabled>Artist<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                        <th class="table-header" scope="col" data-sort-type="number" data-sort-key="score" aria-sort="descending"><button type="button" data-sort-column disabled>Similarity<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                        <th class="table-header" scope="col">YouTube</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr class="table-row" data-score="81">
+                            <td data-row-number>1</td><td>Beats &amp; Rhym</td><td>MACCHO, NORIKIYO, 般若 &amp; DABO</td>
+                            <td><div class="similarity">81% <span class="score-bar" style="--score:81%" aria-hidden="true"></span></div></td>
+                            <td><a class="video-link" href="https://www.youtube.com/results?search_query=Beats+and+Rhym+MACCHO" aria-label="Find Beats and Rhym on YouTube">▶</a></td>
+                        </tr>
 
-        </div>
+                        <tr class="table-row" data-score="79">
+                            <td data-row-number>2</td><td>Chxxai</td><td>Creepy Nuts</td>
+                            <td><div class="similarity">79% <span class="score-bar" style="--score:79%" aria-hidden="true"></span></div></td>
+                            <td><a class="video-link" href="https://www.youtube.com/results?search_query=Chxxai+Creepy+Nuts" aria-label="Find Chxxai on YouTube">▶</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
     </main>
+    <svg class="page-waves" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="wave-fill" x2="0%" y2="100%">
+            <stop stop-color="#7d3de0" stop-opacity=".4"/>
+            <stop offset="1" stop-color="#301656" stop-opacity=".05"/>
+        </linearGradient></defs>
+        <path d="M0 70 C340 -45 450 235 790 180 S1180 -30 1440 95 V260 H0Z" fill="url(#wave-fill)" stroke="#6438a4" stroke-opacity=".55"/>
+        <path d="M0 205 C315 218 385 110 610 136 S1080 330 1440 180 V260 H0Z" fill="url(#wave-fill)" stroke="#8c44d7" stroke-opacity=".45"/>
+    </svg>
 
-    <footer>
-        <nav>
-            <a href="about.html">about</a>
-        </nav>
-    </footer>
-
-    <script type="importmap">
-        {
-            "imports": {
-                "kuroshiro": "https://esm.sh/kuroshiro@1.2.0",
-                "kuroshiro-analyzer-kuromoji": "https://esm.sh/kuroshiro-analyzer-kuromoji@1.1.0"
-            }
-        }
-    </script>
-    <script type="module" src="{{ url_for('static', filename='js/javascript.js') }}" async defer></script>
+    <!-- addRow() inserts its existing placeholder text here during initialization. -->
+    <table id="inputtedSongs" hidden aria-hidden="true"></table>
 </body>
-
 </html>

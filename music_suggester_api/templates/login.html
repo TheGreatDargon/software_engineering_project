@@ -1,0 +1,47 @@
+
+{% extends "auth-layout.html" %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+
+<h1 id="auth-heading">Sign In</h1>
+<p>Welcome back to MusicSuggestor.</p>
+
+{% if error %}
+<p class="auth-error" role="alert">{{ error }}</p>
+{% endif %}
+
+<form method="POST" action="{{ url_for('login') }}">
+    <div class="auth-fields">
+        <label for="username">Username</label>
+        <input
+            id="username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            placeholder="Enter your username"
+            required
+        >
+
+        <label for="password">Password</label>
+        <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+        >
+
+        <button class="sign-in" type="submit">
+            Sign In
+        </button>
+    </div>
+</form>
+
+<p class="auth-switch">
+    New to MusicSuggestor?
+    <a href="{{ url_for('signUp') }}">Sign Up</a>
+</p>
+
+{% endblock %}

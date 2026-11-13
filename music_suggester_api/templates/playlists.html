@@ -1,0 +1,24 @@
+{% extends "auth-layout.html" %}
+
+{% block title %}My Playlists{% endblock %}
+
+{% block main %}
+<main>
+    <section class="playlists-section" aria-labelledby="playlists-heading">
+        <h1 id="playlists-heading">My <span class="accent">Playlists</span></h1>
+        <p>Your saved music, all in one place.</p>
+        {% if playlists %}
+        <ul class="playlist-list">
+            {% for playlist in playlists %}
+            <li class="playlist-card">
+                <h2>{{ playlist.playlist_name }}</h2>
+                <p>{{ playlist.song_count }} {{ 'song' if playlist.song_count == 1 else 'songs' }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="playlist-card playlist-empty">No playlists yet. Your saved playlists will appear here.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
