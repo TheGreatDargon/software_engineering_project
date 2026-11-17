@@ -28,8 +28,14 @@ cd .venv
 
 3. install flask using pip
 
+Required Packages:
 ```
-pip install flask mysql.connector dotenv
+pip install flask mysql-connector-python dotenv
+```
+
+Optionally:
+```
+pip install -r requirements.txt
 ```
 
 4. Run the App
@@ -66,8 +72,14 @@ source .venv/bin/activate.[script file extension here]
 
 3. Install flask using pip
 
+Required Packages:
 ```
-pip install flask mysql.connector dotenv
+pip install flask mysql-connector-python dotenv
+```
+
+Optionally:
+```
+pip install -r requirements.txt
 ```
 
 4. Run the App
