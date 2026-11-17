@@ -251,7 +251,7 @@ select {
     width: 3.25rem;
     height: 3.25rem;
     padding: 0;
-    border-radius: .6rem;
+    border-radius: 50%;
     background-color: var(--button);
     background-size: cover;
     background-position: center;
@@ -262,6 +262,7 @@ select {
     flex: 0 0 3.25rem;
     width: 3.25rem;
     height: 3.25rem;
+    border-radius: 50%;
 }
 
 @keyframes spin {
