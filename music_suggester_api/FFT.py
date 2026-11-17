@@ -7,7 +7,10 @@ import librosa
 #call the function to run a file through FTT analysis
 def analyizeFFT(filePath):
     file = filePath
-    signal, sample_rate = librosa.load(file, offset = 11.0, duration = 60.0)
+    if (librosa.get_duration(path = file) < 75.0):
+        signal, sample_rate = librosa.load(file, duration = librosa.get_duration(path = file))
+    else: 
+        signal, sample_rate = librosa.load(file, offset = 11.0, duration = 60.0)
 
     #if we can make sure that N will be the same for any input track it will improve thigns during the 
     #graphing/testing similarity score step
@@ -37,9 +40,9 @@ def analyizeBPM(filePath):
     signal, sample_rate = librosa.load(filePath, offset = 11.0, duration = 60.0)
     onset_env = librosa.onset.onset_strength(y=signal, sr=sample_rate)
 
-    #get the tempo (bpm) which will be a float
+    #get the tempo (bpm) which will be an np.array, cast it to int
     tempo = librosa.feature.tempo(onset_envelope=onset_env, sr=sample_rate)
-    tempo = int(tempo) #i want it as an int and it works... but it does throw a warning.
+    tempo = tempo.astype(int) #i want it as an int
     print(f"Beats Per Minute: {tempo}")
 
 def cosine_sim(a, b):
@@ -50,7 +53,8 @@ def cosine_sim(a, b):
 file = ".music_files/Doechii - Anxiety (Official Video).mp3"
 freq_input, mag_input, track_length1 = analyizeFFT(file)
 print(f"your input song is {file}")
-analyizeBPM(file) #for 7 nation army, a song thats bpm is 124, im getting 123.04 hits a minute.
+analyizeBPM(file) #Check Anxiety, a song that samples Somebody that I used to know, 
+                    #against somebody that I used to know
 
 #start database track checks
 file = ".music_files/Gotye - Somebody That I Used To Know (feat. Kimbra) [Official Music Video] 4.mp3"
@@ -59,23 +63,26 @@ analyizeBPM(file)
 
 #cosine check on the two magnitudes, IDK if its that good
 score = cosine_sim(mag_input, mag_DB) * 100
+score = int(score)
 print(f"Similarity Score = {score}")
 
 file = ".music_files/Labi Siffre - I Got The... (1975) 4.mp3"
 freq_DB, mag_DB, track_length2 = analyizeFFT(file)
 analyizeBPM(file)
-#cosine check on the two magnitudes, IDK if its that good
+
 score = cosine_sim(mag_input, mag_DB) * 100
+score = int(score)
 print(f"Similarity Score = {score}")
 
 file = ".music_files/The White Stripes - Seven Nation Army (Official Music Video) 4.mp3"
 freq_DB, mag_DB, track_length2 = analyizeFFT(file)
 analyizeBPM(file)
-#cosine check on the two magnitudes, IDK if its that good
+
 score = cosine_sim(mag_input, mag_DB) * 100
+score = int(score)
 print(f"Similarity Score = {score}")
 
-#graph the results // extreamly computationally expensive and is just for testing/learning.
+##graph the results // extreamly computationally expensive and is just for testing/learning.
 #plt.subplots()
 #plt.stem(freq_input[:track_length1//2], mag_input[:track_length1//2],linefmt='C0-', markerfmt='C0o', basefmt=' ', label='sig1')
 #plt.stem(freq_DB[:track_length1//2], mag_DB[:track_length1//2], linefmt='C1-', markerfmt='C1o', basefmt=' ', label='sig2')
